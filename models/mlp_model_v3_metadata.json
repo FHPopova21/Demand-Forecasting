@@ -1,0 +1,21 @@
+{
+  "model_type": "MLP_v3_Residual",
+  "architecture": "128-64-64-32 (with residual connections)",
+  "n_features": 36,
+  "n_params": 28673,
+  "trainable_params": 28097,
+  "batch_size": 256,
+  "optimizer": "adam",
+  "loss": "mse",
+  "target_transform": "log1p",
+  "inverse_transform": "expm1",
+  "test_metrics": {
+    "mse": 5.814936637878418,
+    "mae": 0.8666694164276123,
+    "rmse": 2.411417972454883,
+    "mape": 2039836160.0
+  },
+  "training_epochs": 15,
+  "final_train_loss": 0.1863786280155182,
+  "final_val_loss": 0.5351482033729553
+}
