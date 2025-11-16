@@ -1,0 +1,98 @@
+{
+  "numeric_cols": [
+    "wm_yr_wk",
+    "wday",
+    "month",
+    "year",
+    "sell_price",
+    "sales_lag7",
+    "sales_lag14",
+    "sales_lag28",
+    "sales_rmean7",
+    "sales_rstd7",
+    "sales_rmean28",
+    "sales_rstd28"
+  ],
+  "categorical_cols": [
+    "item_id",
+    "dept_id",
+    "cat_id",
+    "store_id",
+    "state_id",
+    "event_name_1",
+    "event_type_1"
+  ],
+  "feature_cols": [
+    "item_id",
+    "dept_id",
+    "cat_id",
+    "store_id",
+    "state_id",
+    "wm_yr_wk",
+    "wday",
+    "month",
+    "year",
+    "event_name_1",
+    "event_type_1",
+    "snap_CA",
+    "snap_TX",
+    "snap_WI",
+    "sell_price",
+    "sales_lag7",
+    "sales_lag14",
+    "sales_lag28",
+    "sales_rmean7",
+    "sales_rstd7",
+    "sales_rmean28",
+    "sales_rstd28"
+  ],
+  "num_features": 22,
+  "num_numeric": 12,
+  "num_categorical": 7,
+  "label_encoder_categories": {
+    "item_id": [
+      "HOBBIES_1_001",
+      "HOBBIES_1_002",
+      "HOBBIES_1_003",
+      "HOBBIES_1_004",
+      "HOBBIES_1_005",
+      "HOBBIES_1_006",
+      "HOBBIES_1_007",
+      "HOBBIES_1_008",
+      "HOBBIES_1_009",
+      "HOBBIES_1_010"
+    ],
+    "dept_id": [
+      "HOBBIES_1",
+      "HOBBIES_2"
+    ],
+    "cat_id": [
+      "HOBBIES"
+    ],
+    "store_id": [
+      "CA_1"
+    ],
+    "state_id": [
+      "CA"
+    ],
+    "event_name_1": [
+      "Chanukah End",
+      "Christmas",
+      "Cinco De Mayo",
+      "ColumbusDay",
+      "Easter",
+      "Eid al-Fitr",
+      "EidAlAdha",
+      "Father's day",
+      "Halloween",
+      "IndependenceDay"
+    ],
+    "event_type_1": [
+      "Cultural",
+      "National",
+      "Religious",
+      "Sporting",
+      "Unknown"
+    ]
+  }
+}
