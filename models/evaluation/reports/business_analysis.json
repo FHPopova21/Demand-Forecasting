@@ -1,0 +1,8 @@
+{
+  "mean_sales": 0.9606302380561829,
+  "mae_relative_percent": 93.84058380126953,
+  "underestimation_percent": 26.702846042366872,
+  "overestimation_percent": 73.29715395763313,
+  "large_errors_count": 8108,
+  "large_errors_percent": 5.000154173475995
+}
