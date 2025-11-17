@@ -181,6 +181,32 @@ jupyter notebook models/notebooks/ModelEvaluation.ipynb
 - Визуализации в `models/evaluation/visualizations/`
 - Отчети в `models/evaluation/reports/`
 
+### 4. Интеграция с Flask API
+
+За лесно внедряване в уеб услуга използвай помощния модул `models/flask_pipeline.py`.
+
+```python
+from models.flask_pipeline import (
+    preprocess_input,
+    predict_value,
+    postprocess_output,
+)
+
+payload = {...}  # JSON от клиента
+features = preprocess_input(payload)
+raw_prediction = predict_value(features)
+prediction = postprocess_output(raw_prediction)
+```
+
+Модулът автоматично зарежда:
+
+- обучен модел: `models/trained_models/best_mlp_model.keras`
+- scaler: `models/preprocessing/scaler.pkl`
+- label encoders: `models/preprocessing/label_encoders.pkl`
+- feature order: `models/preprocessing/feature_list.pkl`
+
+Достатъчно е да импортираш функциите във Flask route и да върнеш стойността като JSON.
+
 ---
 
 ## 📊 Резултати
