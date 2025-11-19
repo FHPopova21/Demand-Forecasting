@@ -1,8 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\ml"
+    "\\app",
+    "\\backend",
+    "\\data",
+    "\\models",
+    "\\models\\trained_models",
+    "\\models\\training",
+    "\\PresentationLayer",
+    "\\PresentationLayer\\public",
+    "\\src"
   ],
-  "SelectedNode": "\\ml\\__init__.py",
+  "SelectedNode": "\\src\\_setup.py",
   "PreviewInSolutionExplorer": false
 }
