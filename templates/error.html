@@ -1,0 +1,42 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Error - ML Forecasting System{% endblock %}
+
+{% block content %}
+<div class="error-page">
+    <div class="container">
+        <div class="error-content">
+            <div class="error-icon">⚠️</div>
+            <h1>Oops! Something Went Wrong</h1>
+
+            <div class="error-message">
+                <p>{{ error_message if error_message else "An unexpected error occurred. Please try again." }}</p>
+            </div>
+
+            <div class="error-details">
+                <h3>What can you do?</h3>
+                <ul>
+                    <li>Check that all input values are valid numbers</li>
+                    <li>Ensure all required fields are filled in</li>
+                    <li>Try refreshing the page and submitting again</li>
+                    <li>If the problem persists, contact support</li>
+                </ul>
+            </div>
+
+            <div class="error-actions">
+                <a href="{{ url_for('predict_form') }}" class="btn btn-primary">Try Again</a>
+                <a href="{{ url_for('index') }}" class="btn btn-secondary">Go to Home</a>
+            </div>
+
+            <div class="help-section">
+                <h3>Need Help?</h3>
+                <p>
+                    If you continue to experience issues, please check our
+                    <a href="{{ url_for('how_it_works') }}">How It Works</a> page for guidance,
+                    or contact our support team.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

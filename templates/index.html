@@ -1,0 +1,61 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Home - ML Forecasting System{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="container">
+        <h1>ML Forecasting System</h1>
+        <p class="subtitle">Advanced machine learning predictions powered by state-of-the-art models</p>
+
+        <div class="hero-content">
+            <div class="description">
+                <h2>About This Project</h2>
+                <p>
+                    This forecasting system uses a trained MLP (Multi-Layer Perceptron) model
+                    to predict future values based on historical data patterns. The model has been
+                    trained on extensive datasets and includes advanced preprocessing pipelines
+                    for optimal accuracy.
+                </p>
+                <p>
+                    Our system processes multiple input features including temporal patterns,
+                    environmental conditions, and contextual information to deliver reliable forecasts.
+                </p>
+            </div>
+
+            <div class="features">
+                <h3>Key Features</h3>
+                <ul>
+                    <li>Real-time prediction capabilities</li>
+                    <li>Advanced preprocessing pipeline</li>
+                    <li>Confidence interval estimation</li>
+                    <li>Comprehensive model documentation</li>
+                    <li>Interactive visualization tools</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cta-buttons">
+            <a href="{{ url_for('predict_form') }}" class="btn btn-primary">Make a Prediction</a>
+            <a href="{{ url_for('how_it_works') }}" class="btn btn-secondary">How it Works</a>
+        </div>
+    </div>
+</div>
+
+<div class="info-cards">
+    <div class="container">
+        <div class="card">
+            <h3>🎯 Accurate</h3>
+            <p>Trained on extensive datasets with robust validation</p>
+        </div>
+        <div class="card">
+            <h3>⚡ Fast</h3>
+            <p>Get predictions in milliseconds</p>
+        </div>
+        <div class="card">
+            <h3>📊 Transparent</h3>
+            <p>Full model documentation and metrics available</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
