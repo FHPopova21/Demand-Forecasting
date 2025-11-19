@@ -13,10 +13,6 @@ from dataclasses import dataclass
 from functools import lru_cache
 from pathlib import Path
 from typing import Any, Dict, Iterable
-
-# Ensure we use the same backend that was used during training
-os.environ.setdefault("KERAS_BACKEND", "torch")
-
 from keras import ops  # noqa: E402
 from keras.models import load_model as keras_load_model  # noqa: E402
 
