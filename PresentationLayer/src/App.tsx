@@ -7,7 +7,7 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import Dashboard from "./pages/Dashboard";
 import Forecast from "./pages/Forecast";
-import DataExplorer from "./pages/DataExplorer";
+import ModelCard from "./pages/DataExplorer";
 import Performance from "./pages/Performance";
 import NotFound from "./pages/NotFound";
 
@@ -32,7 +32,7 @@ const App = () => (
                 <Routes>
                   <Route path="/" element={<Dashboard />} />
                   <Route path="/forecast" element={<Forecast />} />
-                  <Route path="/data" element={<DataExplorer />} />
+                  <Route path="/model-card" element={<ModelCard />} />
                   <Route path="/performance" element={<Performance />} />
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />

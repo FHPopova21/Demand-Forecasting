@@ -15,7 +15,7 @@ import {
 const items = [
   { title: "Dashboard", url: "/", icon: LayoutDashboard },
   { title: "Forecast Form", url: "/forecast", icon: FileInput },
-  { title: "Data Explorer", url: "/data", icon: Database },
+  { title: "Model Card", url: "/model-card", icon: Database },
   { title: "Model Performance", url: "/performance", icon: LineChart },
 ];
 

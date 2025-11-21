@@ -41,11 +41,32 @@ const Dashboard = () => {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div>
-        <h1 className="text-3xl font-bold text-foreground">Hierarchical Demand Forecasting</h1>
-        <p className="text-muted-foreground mt-2">
-          M5 Forecasting Competition — Predicting demand across hierarchical product and store structures
-        </p>
+      <div className="space-y-4">
+        <div>
+          <h1 className="text-3xl font-bold text-foreground">Hierarchical Demand Forecasting</h1>
+          <p className="text-muted-foreground mt-2">
+            A practical control room for exploring demand signals across the M5 hierarchy (items → departments → states).
+          </p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2">
+          <Card className="p-5 border-border shadow-sm">
+            <h2 className="text-lg font-semibold text-foreground">Какво представлява платформата?</h2>
+            <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
+              Актуалният контролен панел комбинира оперативни данни, визуализации и форми за прогноза в един изглед. 
+              Ползвай Forecast Form за симулации, Data Explorer за исторически серии и Performance за точност, 
+              за да планираш реагираш и оптимизираш на база реалните сигнали от M5 данните.
+            </p>
+          </Card>
+          <Card className="p-5 border-border shadow-sm">
+            <h2 className="text-lg font-semibold text-foreground">Как работи моделът?</h2>
+            <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
+              Нашата платформа използва модерен MLP модел, разработен да ви даде моментална и прецизна прогноза за всеки продукт, магазин и ситуация. 
+              Вместо стандартни прогнози тип „един хоризонт за всички“, моделът симулира точно това, което ви интересува – каква ще бъде продажбата при зададените от вас условия.
+              Променете цена, събитие, ден от седмицата или активност на SNAP – и веднага виждате как тези фактори влияят върху търсенето. 
+              Така получавате мощен инструмент за планиране, оптимизация и бързи бизнес решения, базирани на интелигентна и адаптивна прогноза.
+            </p>
+          </Card>
+        </div>
       </div>
 
       {/* Stats Overview */}
@@ -119,35 +140,6 @@ const Dashboard = () => {
         </Card>
       </div>
 
-      {/* Hierarchy Tree Visualization */}
-      <Card className="p-6 shadow-sm border-border">
-        <div className="mb-4">
-          <h3 className="text-lg font-semibold text-foreground">Hierarchical Structure</h3>
-          <p className="text-sm text-muted-foreground">Product and store hierarchy levels</p>
-        </div>
-        <div className="flex items-center justify-center py-8">
-          <div className="space-y-4 w-full max-w-2xl">
-            <div className="flex justify-center">
-              <div className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium">
-                Total
-              </div>
-            </div>
-            <div className="flex justify-center gap-8">
-              <div className="px-5 py-2 bg-accent/20 text-accent-foreground rounded-lg border-2 border-accent">
-                State (3)
-              </div>
-            </div>
-            <div className="flex justify-center gap-4">
-              <div className="px-4 py-2 bg-secondary rounded-lg border border-border">Store (10)</div>
-              <div className="px-4 py-2 bg-secondary rounded-lg border border-border">Category (3)</div>
-            </div>
-            <div className="flex justify-center gap-3">
-              <div className="px-3 py-1.5 bg-muted rounded text-sm border border-border">Dept (7)</div>
-              <div className="px-3 py-1.5 bg-muted rounded text-sm border border-border">Items (3,049)</div>
-            </div>
-          </div>
-        </div>
-      </Card>
     </div>
   );
 };

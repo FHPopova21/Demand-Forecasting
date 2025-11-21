@@ -233,6 +233,15 @@ const Forecast = () => {
         </p>
       </div>
 
+      <Card className="p-4 border border-dashed border-primary/40 bg-primary/5">
+        <p className="text-sm font-semibold text-foreground">Как да разчиташ полетата?</p>
+        <ul className="text-xs text-muted-foreground list-disc pl-4 mt-2 space-y-1">
+          <li>Раздел „Product identifiers“ описва къде точно се продава артикулът (SKU → Department → State/Store).</li>
+          <li>„Events & SNAP“ дава контекст за празници и активни социални програми, които влияят на търсенето.</li>
+          <li>„Pricing & Lags“ са числови признаци – въведи актуална цена, а останалите статистики остават по подразбиране.</li>
+        </ul>
+      </Card>
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Input Form */}
         <Card className="lg:col-span-2 p-6 shadow-sm border-border">
@@ -271,9 +280,20 @@ const Forecast = () => {
             </div>
 
             {/* Product Identifiers */}
+            <div className="space-y-3">
+              <div className="space-y-1">
+                <p className="text-sm font-semibold text-foreground">Product identifiers *</p>
+                <p className="text-xs text-muted-foreground">
+                  Използвай тези drop-down списъци, за да локализираш артикул в M5 йерархията (артикул → категория → магазин/щат).
+                </p>
+              </div>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="item_id">Item ID *</Label>
+                <div className="space-y-1">
+                  <Label htmlFor="item_id">Item ID *</Label>
+                  <p className="text-xs text-muted-foreground">Конкретният SKU/артикул, за който искаш прогноза.</p>
+                </div>
                 <Select value={itemId} onValueChange={setItemId} disabled={loadingFeatures}>
                   <SelectTrigger>
                     <SelectValue placeholder={loadingFeatures ? "Loading..." : "Select item"} />
@@ -289,7 +309,10 @@ const Forecast = () => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="store_id">Store ID *</Label>
+                <div className="space-y-1">
+                  <Label htmlFor="store_id">Store ID *</Label>
+                  <p className="text-xs text-muted-foreground">Избери конкретния магазин от държавата/щата.</p>
+                </div>
                 <Select value={storeId} onValueChange={setStoreId} disabled={loadingFeatures}>
                   <SelectTrigger>
                     <SelectValue placeholder={loadingFeatures ? "Loading..." : "Select store"} />
@@ -305,7 +328,10 @@ const Forecast = () => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="dept_id">Department ID *</Label>
+                <div className="space-y-1">
+                  <Label htmlFor="dept_id">Department ID *</Label>
+                  <p className="text-xs text-muted-foreground">Над-категорията, към която принадлежи артикула.</p>
+                </div>
                 <Select value={deptId} onValueChange={setDeptId} disabled={loadingFeatures}>
                   <SelectTrigger>
                     <SelectValue placeholder={loadingFeatures ? "Loading..." : "Select department"} />
@@ -321,7 +347,10 @@ const Forecast = () => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="cat_id">Category ID *</Label>
+                <div className="space-y-1">
+                  <Label htmlFor="cat_id">Category ID *</Label>
+                  <p className="text-xs text-muted-foreground">Подкатегория (като HOBBIES, FOODS, HOUSEHOLD).</p>
+                </div>
                 <Select value={catId} onValueChange={setCatId} disabled={loadingFeatures}>
                   <SelectTrigger>
                     <SelectValue placeholder={loadingFeatures ? "Loading..." : "Select category"} />
@@ -337,7 +366,10 @@ const Forecast = () => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="state_id">State ID *</Label>
+                <div className="space-y-1">
+                  <Label htmlFor="state_id">State ID *</Label>
+                  <p className="text-xs text-muted-foreground">Щатът, в който се намира избраният магазин.</p>
+                </div>
                 <Select value={stateId} onValueChange={setStateId} disabled={loadingFeatures}>
                   <SelectTrigger>
                     <SelectValue placeholder={loadingFeatures ? "Loading..." : "Select state"} />
@@ -354,6 +386,12 @@ const Forecast = () => {
             </div>
 
             {/* Events */}
+            <div className="space-y-1">
+              <p className="text-sm font-semibold text-foreground">Events & Campaigns</p>
+              <p className="text-xs text-muted-foreground">
+                Добави празници или локални кампании, които влияят на продажбите. Ако няма такава – избери „None“.
+              </p>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="event_name">Event Name</Label>
@@ -394,6 +432,9 @@ const Forecast = () => {
             {/* SNAP Benefits */}
             <div className="space-y-2">
               <Label>SNAP Benefits Active</Label>
+              <p className="text-xs text-muted-foreground">
+                Отбележи в кои щати е активна програмата Supplemental Nutrition Assistance Program за избраната дата.
+              </p>
               <div className="flex gap-6">
                 <div className="flex items-center space-x-2">
                   <Switch id="snap_ca" checked={snapCA} onCheckedChange={setSnapCA} />
@@ -413,6 +454,9 @@ const Forecast = () => {
             {/* Price */}
             <div className="space-y-2">
               <Label htmlFor="sell_price">Sell Price *</Label>
+              <p className="text-xs text-muted-foreground">
+                Текущата продажна цена на артикула. Моделът използва тази стойност, за да изчисли чувствителността към цена.
+              </p>
               <Input
                 id="sell_price"
                 type="number"
@@ -425,9 +469,10 @@ const Forecast = () => {
             </div>
 
             {/* Advanced fields (скрити по подразбиране, могат да се разширят) */}
-            <div className="text-xs text-muted-foreground pt-2 border-t">
-              <p>Note: Sales lag and rolling statistics are set to default values.</p>
-              <p>These will be automatically calculated from historical data in a future update.</p>
+            <div className="text-xs text-muted-foreground pt-3 border-t space-y-1">
+              <p className="text-sm font-semibold text-foreground">Advanced demand signals</p>
+              <p>Sales lag and rolling statistics са попълнени с разумни стойности.</p>
+              <p>В следваща версия ще се калкулират автоматично от историческите данни на клиента.</p>
             </div>
 
             <Button type="submit" className="w-full" disabled={loading || loadingFeatures}>

@@ -1,86 +1,113 @@
 import { Card } from "@/components/ui/card";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
 
-const performanceData = [
-  { epoch: 1, train: 0.45, val: 0.48 },
-  { epoch: 2, train: 0.38, val: 0.42 },
-  { epoch: 3, train: 0.32, val: 0.39 },
-  { epoch: 4, train: 0.28, val: 0.35 },
-  { epoch: 5, train: 0.25, val: 0.33 },
-  { epoch: 6, train: 0.22, val: 0.31 },
-  { epoch: 7, train: 0.20, val: 0.30 },
-  { epoch: 8, train: 0.18, val: 0.29 },
+const trainingHistory = [
+  { epoch: 1, train: 0.65, val: 0.63 },
+  { epoch: 2, train: 0.60, val: 0.59 },
+  { epoch: 3, train: 0.55, val: 0.54 },
+  { epoch: 4, train: 0.51, val: 0.50 },
+  { epoch: 5, train: 0.48, val: 0.47 },
+  { epoch: 6, train: 0.45, val: 0.44 },
+  { epoch: 7, train: 0.43, val: 0.42 },
+  { epoch: 8, train: 0.41, val: 0.41 },
+  { epoch: 9, train: 0.40, val: 0.40 },
+  { epoch: 10, train: 0.39, val: 0.39 },
+  { epoch: 11, train: 0.38, val: 0.38 },
+  { epoch: 12, train: 0.38, val: 0.37 },
+  { epoch: 13, train: 0.37, val: 0.37 },
+  { epoch: 14, train: 0.37, val: 0.37 },
+  { epoch: 15, train: 0.36, val: 0.37 },
+  { epoch: 16, train: 0.36, val: 0.36 },
+  { epoch: 17, train: 0.36, val: 0.36 },
+  { epoch: 18, train: 0.36, val: 0.36 },
+];
+
+const versionComparison = [
+  { metric: "Train MSE", model1: "5.2028", model2: "5.3217", model3: "(log) 0.1864" },
+  { metric: "Validation MSE", model1: "4.8226", model2: "5.9893", model3: "(log) 0.5351" },
+  { metric: "Test MSE (orig)", model1: "5.0499", model2: "5.1977", model3: "5.8149" },
+  { metric: "Test MAE", model1: "0.9015", model2: "1.0184", model3: "0.8667" },
+  { metric: "Test RMSE", model1: "2.2472", model2: "2.2798", model3: "2.4114" },
+  { metric: "Overfitting risk", model1: "None (excellent)", model2: "Low", model3: "Medium" },
+  { metric: "Recommended use", model1: "Production baseline", model2: "—", model3: "MAE optimization" },
 ];
 
 const Performance = () => {
   return (
     <div className="space-y-8">
       <div>
+        <p className="text-xs uppercase text-muted-foreground">Updated Model 1.0 • Recommended for production</p>
         <h1 className="text-3xl font-bold text-foreground">Model Performance</h1>
         <p className="text-muted-foreground mt-2">
-          Training metrics and evaluation results
+          Final evaluation of the re-trained Model 1.0 baseline (batch size 1024, stable LR). Best test RMSE/MSE, no overfitting.
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Card className="p-6 shadow-sm border-border">
-          <h4 className="font-semibold text-foreground mb-2">RMSE</h4>
-          <p className="text-3xl font-bold text-primary">0.289</p>
-          <p className="text-sm text-metric-positive mt-1">↓ 12% improvement</p>
+          <p className="text-sm text-muted-foreground">Test RMSE</p>
+          <p className="text-3xl font-bold text-primary mt-2">2.2472</p>
+          <p className="text-xs text-muted-foreground mt-1">Lowest across all versions</p>
         </Card>
         <Card className="p-6 shadow-sm border-border">
-          <h4 className="font-semibold text-foreground mb-2">WRMSSE</h4>
-          <p className="text-3xl font-bold text-primary">0.512</p>
-          <p className="text-sm text-metric-positive mt-1">↓ 8% improvement</p>
+          <p className="text-sm text-muted-foreground">Test MSE</p>
+          <p className="text-3xl font-bold text-primary mt-2">5.0499</p>
+          <p className="text-xs text-muted-foreground mt-1">Highest overall stability</p>
         </Card>
         <Card className="p-6 shadow-sm border-border">
-          <h4 className="font-semibold text-foreground mb-2">R² Score</h4>
-          <p className="text-3xl font-bold text-primary">0.924</p>
-          <p className="text-sm text-metric-positive mt-1">↑ 3% improvement</p>
+          <p className="text-sm text-muted-foreground">Test MAE</p>
+          <p className="text-3xl font-bold text-primary mt-2">0.9015</p>
+          <p className="text-xs text-muted-foreground mt-1">Slightly higher than Model 3.0 but very stable</p>
         </Card>
       </div>
 
       <Card className="p-6 shadow-sm border-border">
         <div className="mb-4">
-          <h3 className="text-lg font-semibold text-foreground">Training History</h3>
-          <p className="text-sm text-muted-foreground">Loss progression over epochs</p>
+          <h3 className="text-lg font-semibold text-foreground">Training History (Updated Model 1.0)</h3>
+          <p className="text-sm text-muted-foreground">Batch size 1024, stable LR (no cosine decay). Val loss tracks train closely.</p>
         </div>
-        <ResponsiveContainer width="100%" height={400}>
-          <LineChart data={performanceData}>
+        <ResponsiveContainer width="100%" height={380}>
+          <LineChart data={trainingHistory}>
             <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-            <XAxis 
-              dataKey="epoch" 
-              stroke="hsl(var(--muted-foreground))"
-              label={{ value: 'Epoch', position: 'insideBottom', offset: -5 }}
-            />
-            <YAxis 
-              stroke="hsl(var(--muted-foreground))"
-              label={{ value: 'Loss', angle: -90, position: 'insideLeft' }}
-            />
-            <Tooltip 
-              contentStyle={{ 
-                backgroundColor: 'hsl(var(--card))', 
-                border: '1px solid hsl(var(--border))',
-                borderRadius: '0.5rem'
-              }} 
+            <XAxis dataKey="epoch" stroke="hsl(var(--muted-foreground))" />
+            <YAxis stroke="hsl(var(--muted-foreground))" />
+            <Tooltip
+              contentStyle={{
+                backgroundColor: "hsl(var(--card))",
+                border: "1px solid hsl(var(--border))",
+                borderRadius: "0.5rem",
+              }}
             />
             <Legend />
-            <Line 
-              type="monotone" 
-              dataKey="train" 
-              stroke="hsl(var(--chart-primary))" 
-              strokeWidth={2}
-              name="Training Loss"
-            />
-            <Line 
-              type="monotone" 
-              dataKey="val" 
-              stroke="hsl(var(--chart-secondary))" 
-              strokeWidth={2}
-              name="Validation Loss"
-            />
+            <Line type="monotone" dataKey="train" stroke="hsl(var(--chart-primary))" strokeWidth={2} dot={false} name="Train Loss" />
+            <Line type="monotone" dataKey="val" stroke="hsl(var(--chart-secondary))" strokeWidth={2} dot={false} name="Validation Loss" />
           </LineChart>
         </ResponsiveContainer>
+      </Card>
+
+      <Card className="p-6 shadow-sm border-border">
+        <h3 className="text-lg font-semibold text-foreground mb-4">Version Comparison (Updated)</h3>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Metric</TableHead>
+              <TableHead>Model 1.0 (NEW)</TableHead>
+              <TableHead>Model 2.0</TableHead>
+              <TableHead>Model 3.0</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {versionComparison.map((row) => (
+              <TableRow key={row.metric}>
+                <TableCell className="font-medium">{row.metric}</TableCell>
+                <TableCell className="text-primary font-semibold">{row.model1}</TableCell>
+                <TableCell>{row.model2}</TableCell>
+                <TableCell>{row.model3}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </Card>
     </div>
   );
