@@ -21,8 +21,8 @@ def smoke_imports():
 def smoke_preprocess():
     # example payload - адаптирай към твоите feature имена
     payload = {
-        "item_id": "A123",
-        "store_id": "S01",
+        "item_id": "HOUSEHOLD_1_001",
+        "store_id": "CA_3",
         "date": "2025-11-17",
         "price": 9.99,
         "promo": 0

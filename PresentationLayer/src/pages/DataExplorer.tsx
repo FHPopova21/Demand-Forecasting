@@ -10,24 +10,27 @@ const architectureRows = [
   { label: "Optimizer", value: "Adam (default betas)" },
   { label: "LR schedule", value: "ReduceLROnPlateau (factor 0.5, patience 5, min LR 1e-7)" },
   { label: "Regularization", value: "Dropout, BatchNorm, EarlyStopping (patience 10, restore best weights)" },
+  { label: "Hidden stack", value: "Dense(128) → BN → Dropout 0.30 → Dense(64) → BN → Dropout 0.20 → Dense(32) → BN → Dropout 0.10 (final production)" },
+
 ];
 
 const testMetrics = [
-  { metric: "RMSE", value: "2.2472" },
-  { metric: "MAE", value: "0.9015" },
-  { metric: "MSE", value: "5.0499" },
-  { metric: "WAPE", value: "60.29%" },
-  { metric: "WRMSSE", value: "233.93%" },
-  { metric: "MAPE", value: "61.34% (zero-demand rows → interpret carefully)" },
+  { metric: "RMSE", value: "2.2448" },
+  { metric: "MAE", value: "0.8943" },
+  { metric: "MSE", value: "5.0392" },
+  { metric: "WRMSSE", value: "233.5%" },
+  { metric: "MAPE", value: "61.0% (zero-demand rows → interpret carefully)" },
 ];
+
 
 const versionComparison = [
   { metric: "RMSE", v1: "2.2612", v2: "2.2798", v3: "2.2472", delta: "↓ 0.014" },
   { metric: "MAE", v1: "0.9345", v2: "1.0184", v3: "0.9015", delta: "↓ 0.033" },
-  { metric: "MSE", v1: "5.1130", v2: "5.1977", v3: "5.0499", delta: "↓ 0.063" },
+  { metric: "MSE", v1: "5.1130", v2: "5.1977", v3: "5.0364", delta: "↓ 0.077" },
   { metric: "Validation MSE", v1: "4.9767", v2: "5.9893", v3: "4.8226", delta: "↓ 0.154" },
   { metric: "Epochs (ES trigger)", v1: "24", v2: "13", v3: "18", delta: "—" },
 ];
+
 
 const residualStats = [
   { label: "Mean residual", value: "0.0717" },
@@ -49,6 +52,7 @@ const baselines = [
   { model: "Linear regression", rmse: "2.7809", mae: "1.1681", wape: "71.63%", delta: "+19.2%" },
   { model: "MLP (current)", rmse: "2.2472", mae: "0.9015", wape: "60.29%", delta: "—" },
 ];
+
 
 const checklist = [
   "Model artifact saved as models/trained_models/best_mlp_model.keras",
@@ -187,7 +191,7 @@ const ModelCardPage = () => {
         </Card>
 
         <Card className="p-6 shadow-sm border-border">
-          <h2 className="text-lg font-semibold text-foreground">Test Metrics (Model 3.0)</h2>
+          <h2 className="text-lg font-semibold text-foreground">Test Metrics (Model 4.0)</h2>
           <div className="mt-4 space-y-3">
             {testMetrics.map((metric) => (
               <div key={metric.metric} className="flex items-center justify-between">

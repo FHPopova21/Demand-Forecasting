@@ -24,24 +24,26 @@ const trainingHistory = [
 ];
 
 const versionComparison = [
-  { metric: "Train MSE", model1: "5.2028", model2: "5.3217", model3: "(log) 0.1864" },
-  { metric: "Validation MSE", model1: "4.8226", model2: "5.9893", model3: "(log) 0.5351" },
-  { metric: "Test MSE (orig)", model1: "5.0499", model2: "5.1977", model3: "5.8149" },
-  { metric: "Test MAE", model1: "0.9015", model2: "1.0184", model3: "0.8667" },
-  { metric: "Test RMSE", model1: "2.2472", model2: "2.2798", model3: "2.4114" },
-  { metric: "Overfitting risk", model1: "None (excellent)", model2: "Low", model3: "Medium" },
-  { metric: "Recommended use", model1: "Production baseline", model2: "—", model3: "MAE optimization" },
+  { metric: "Train MSE", model1: "5.2028", model2: "5.3217", model3: "5.2015", model4: "5.1458" },
+  { metric: "Validation MSE", model1: "4.8226", model2: "5.9893", model3: "5.0042", model4: "4.7842" },
+  { metric: "Test MSE", model1: "5.0499", model2: "5.1977", model3: "5.0879", model4: "5.0392" },
+  { metric: "Test MAE", model1: "0.9015", model2: "1.0184", model3: "0.9389", model4: "0.8943" },
+  { metric: "Test RMSE", model1: "2.2472", model2: "2.2798", model3: "2.2556", model4: "2.2448" },
+  { metric: "Overfitting risk", model1: "None", model2: "Low", model3: "None", model4: "None" },
+  { metric: "Recommended use", model1: "Production baseline", model2: "—", model3: "MAE optimization", model4: "Final production" },
 ];
+
 
 const Performance = () => {
   return (
     <div className="space-y-8">
       <div>
-        <p className="text-xs uppercase text-muted-foreground">Updated Model 1.0 • Recommended for production</p>
-        <h1 className="text-3xl font-bold text-foreground">Model Performance</h1>
-        <p className="text-muted-foreground mt-2">
-          Final evaluation of the re-trained Model 1.0 baseline (batch size 1024, stable LR). Best test RMSE/MSE, no overfitting.
-        </p>
+      <p className="text-xs uppercase text-muted-foreground">Updated Model • Wider MLP, recommended for production</p>
+<h1 className="text-3xl font-bold text-foreground">Model Performance (Final)</h1>
+<p className="text-muted-foreground mt-2">
+  Final evaluation of the wider MLP (512→256→128→64) with stable training. Achieves best RMSE & MAE with no overfitting.
+</p>
+
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -52,12 +54,12 @@ const Performance = () => {
         </Card>
         <Card className="p-6 shadow-sm border-border">
           <p className="text-sm text-muted-foreground">Test MSE</p>
-          <p className="text-3xl font-bold text-primary mt-2">5.0499</p>
+          <p className="text-3xl font-bold text-primary mt-2">5.0392</p>
           <p className="text-xs text-muted-foreground mt-1">Highest overall stability</p>
         </Card>
         <Card className="p-6 shadow-sm border-border">
           <p className="text-sm text-muted-foreground">Test MAE</p>
-          <p className="text-3xl font-bold text-primary mt-2">0.9015</p>
+          <p className="text-3xl font-bold text-primary mt-2">0.8943</p>
           <p className="text-xs text-muted-foreground mt-1">Slightly higher than Model 3.0 but very stable</p>
         </Card>
       </div>

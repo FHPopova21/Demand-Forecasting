@@ -1,0 +1,34 @@
+{
+  "metrics": {
+    "RMSE": 2.2472043152881445,
+    "MAE": 0.9014610648155212,
+    "WAPE": 60.29111862182617,
+    "WRMSSE": 233.93020813453882,
+    "MAPE": 61.338645935058594,
+    "MSE": 5.049927234649658
+  },
+  "residuals_stats": {
+    "Mean": 0.07165633887052536,
+    "Median": -0.13564541935920715,
+    "Std": 2.2460615634918213,
+    "Min": -12.639482498168945,
+    "Max": 73.71541595458984,
+    "Q25": -0.41932058334350586,
+    "Q75": 0.14226022362709045
+  },
+  "stability": {
+    "cv_rmse_percent": 1.2337666641670277
+  },
+  "baseline_comparison": {
+    "improvement_vs_naive_percent": 19.617255320641984,
+    "improvement_vs_lr_percent": 19.192100327445395
+  },
+  "business_analysis": {
+    "mean_sales": 0.9606302380561829,
+    "mae_relative_percent": 93.84058380126953,
+    "underestimation_percent": 26.702846042366872,
+    "overestimation_percent": 73.29715395763313,
+    "large_errors_count": 8108,
+    "large_errors_percent": 5.000154173475995
+  }
+}

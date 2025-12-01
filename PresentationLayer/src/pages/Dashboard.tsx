@@ -52,9 +52,7 @@ const Dashboard = () => {
           <Card className="p-5 border-border shadow-sm">
             <h2 className="text-lg font-semibold text-foreground">Какво представлява платформата?</h2>
             <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
-              Актуалният контролен панел комбинира оперативни данни, визуализации и форми за прогноза в един изглед. 
-              Ползвай Forecast Form за симулации, Data Explorer за исторически серии и Performance за точност, 
-              за да планираш реагираш и оптимизираш на база реалните сигнали от M5 данните.
+            Платформата обединява оперативни данни, интерактивни визуализации и формуляри за прогноза на едно място. С Forecast Form можеш да предвиждаш дневните продажби, с Data Explorer да разглеждаш историческите серии, а с Performance да оценяваш точността на прогнозите, за да планираш по-добре стоките и промоциите.
             </p>
           </Card>
           <Card className="p-5 border-border shadow-sm">

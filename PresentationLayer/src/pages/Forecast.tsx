@@ -9,10 +9,10 @@ import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { CalendarIcon, TrendingUp, Loader2 } from "lucide-react";
 import { format } from "date-fns";
-import { cn } from "@/lib/utils";
+import { cn } from "../components/lib/utils";
 import { toast } from "sonner";
-import { getFeaturesMetadata, predict, PredictionPayload, FeaturesMetadata } from "@/lib/api";
-import { calculateDateFeatures } from "@/lib/dateUtils";
+import { getFeaturesMetadata, predict, PredictionPayload, FeaturesMetadata } from "../components/lib/api";
+import { calculateDateFeatures } from "../components/lib/dateUtils";
 
 const DATASET_START_DATE = new Date("2011-01-29");
 const DATASET_END_DATE = new Date("2016-06-19");
